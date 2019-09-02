@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+    h2 Nuevo Atleta
+    form(action="/atletas/create", method="POST").mb-5
+        .form-group
+            label(for="nombre") Nombre
+            input.form-control(type="text", name="nombre")
+        .form-group
+            label(for="apellidos") Apellidos
+            input.form-control(type="text", name="apellidos")
+        .form-group
+            label(for="email") Email
+            input.form-control(type="text", name="email")
+        .form-group
+            label(for="edad") Edad
+            input.form-control(type="text", name="edad")
+        .form-group
+            label(for="disciplina") Disciplina
+            input.form-control(type="text", name="disciplina")
+        .form-group
+            label(for="ubicacion") Ubicacion
+            input.form-control(type="text", name="ubicacion")
+        .form-group
+            label(for="sexo") Sexo
+            select.form-control(type="select", name="sexo")
+                option(value="m") M
+                option(value="f") F
+        input(type="submit", value="Enviar").btn.btn-block.btn-primary

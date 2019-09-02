@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+    h2 Lista de Atletas
+    table.table
+        thead
+            tr
+                th id
+                th nombre
+                th apellidos
+                th email
+                th edad
+                th sexo
+                th ubicacion
+                th acciones
+        tbody
+            each atleta in atletas
+                tr
+                    td= atleta.id
+                    td= atleta.nombre
+                    td= atleta.apellidos
+                    td= atleta.email
+                    td= atleta.edad
+                    td= atleta.sexo
+                    td= atleta.ubicacion
+                    td
+                        a.btn.btn-primary.btn-sm.mr-1(href="/atletas/"+atleta.id)
+                            i.fa.fa-eye
+                        a.btn.btn-danger.btn-sm.mr-1(href="/atletas/delete/"+atleta.id, onclick="return confirm('¿Estás seguro?')")
+                            i.fa.fa-trash
+                        a.btn.btn-success.btn-sm(href="/atletas/update/"+atleta.id)
+                            i.fa.fa-edit
