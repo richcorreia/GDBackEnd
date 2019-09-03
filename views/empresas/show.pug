@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    div
+        a.btn.btn-danger.btn-sm.mr-1(href="/empresas/delete/"+empresa.id, onclick="return confirm('¿Estás seguro?')")
+            i.fa.fa-trash Borrar
+        a.btn.btn-success.btn-sm(href="/empresas/update/"+empresa.id)
+            i.fa.fa-edit Editar
+    h3 Recupero los datos del empresa con id #{empresaId}
+    p Nombre: #{empresa.nombre}
+    p Email: #{empresa.correo}
+    p Telefono: #{empresa.telefono}
+    p Ubicacion: #{empresa.ubicacion}
+    p Disciplina: #{empresa.disciplinas_patrocinio}

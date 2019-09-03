@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    h2 Nueva Empresa
+    form(action="/empresas/create", method="POST").mb-5
+        .form-group
+            label(for="nombre") Nombre
+            input.form-control(type="text", name="nombre")
+        .form-group
+            label(for="correo") Email
+            input.form-control(type="text", name="correo")
+        .form-group
+            label(for="telefono") Telefono
+            input.form-control(type="text", name="telefono")
+        .form-group
+            label(for="disciplinas_patrocinio") Disciplinas
+            input.form-control(type="text", name="disciplinas_patrocinio")
+        .form-group
+            label(for="ubicacion") Ubicacion
+            input.form-control(type="text", name="ubicacion")
+        input(type="submit", value="Enviar").btn.btn-block.btn-primary
