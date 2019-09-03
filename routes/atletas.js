@@ -16,5 +16,16 @@ router.get('/', (req, res) => {
 router.get('/new', (req, res) => {
   res.render('atletas/form');
 })
-
+/* Create atlete */
+router.post('/create', (req, res) => {
+  console.log(req.body);
+  modelAtleta.insert(req.body)
+      .then((result) => {
+          console.log(result);
+          res.redirect('/atletas')
+      })
+      .catch((err) => {
+          console.log(err);
+      })
+})
 module.exports = router;

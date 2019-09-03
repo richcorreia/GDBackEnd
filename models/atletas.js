@@ -8,6 +8,16 @@ const getAll = () => {
         })
     })
 }
+const insert = ({ nombre, apellidos, correo, edad, disciplina, ubicacion, sexo }) => {
+    return new Promise((resolve, reject) => {
+        let q = 'insert into atletas (nombre, apellidos, correo, edad, disciplina, ubicacion, sexo) values (?, ?, ?, ?, ?, ?, ?)';
+        db.get().query(q, [nombre, apellidos, correo, edad, disciplina, ubicacion, sexo], (err, result) => {
+            if (err) reject(err)
+            resolve(result)
+        });
+    })
+}
 module.exports = {
-    getAll: getAll
+    getAll: getAll,
+    insert: insert
 };
