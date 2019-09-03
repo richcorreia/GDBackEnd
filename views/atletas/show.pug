@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    div
+        a.btn.btn-danger.btn-sm.mr-1(href="/atletas/delete/"+atleta.id, onclick="return confirm('¿Estás seguro?')")
+            i.fa.fa-trash Borrar
+        a.btn.btn-success.btn-sm(href="/atletas/update/"+atleta.id)
+            i.fa.fa-edit Editar
+    h3 Recupero los datos del atleta con id #{atletaId}
+    p Nombre: #{atleta.nombre} #{atleta.apellidos}
+    p Email: #{atleta.correo}
+    p Edad: #{atleta.edad}
+    p Sexo: #{atleta.sexo}
+    p Ubicacion: #{atleta.ubicacion}
+    p Disciplina: #{atleta.disciplina}

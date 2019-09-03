@@ -8,6 +8,14 @@ const getAll = () => {
         })
     })
 }
+const getById = (pEmpresaId) => {
+    return new Promise((resolve, reject) => {
+        db.get().query('select * from sponsor where id = ?', [pEmpresaId], (err, rows) => {
+            if (err) reject(err)
+            rows.length == 0 ? reject('No existe una empresa para esa id') : resolve(rows[0])
+        })
+    })
+}
 const insert = ({ nombre, correo, telefono, disciplinas_patrocinio, ubicacion }) => {
     return new Promise((resolve, reject) => {
         let q = 'insert into sponsor (nombre, correo, telefono, disciplinas_patrocinio, ubicacion) values (?, ?, ?, ?, ?)';
@@ -17,7 +25,26 @@ const insert = ({ nombre, correo, telefono, disciplinas_patrocinio, ubicacion })
         });
     })
 }
+const update = (pId, { nombre, correo, telefono, disciplinas_patrocinio, ubicacion }) => {
+    return new Promise((resolve, reject) => {
+        db.get().query('update sponsor set nombre = ?, correo = ?, telefono = ?, disciplinas_patrocinio = ?, ubicacion = ? where id = ?', [nombre, correo, telefono, disciplinas_patrocinio, ubicacion, pId], (err, result) => {
+            if (err) reject(err);
+            resolve(result);
+        });
+    })
+}
+const deleteById = (pId) => {
+    return new Promise((resolve, reject) => {
+        db.get().query('delete from sponsor where id = ?', [pId], (err, result) => {
+            if (err) reject(err);
+            resolve(result);
+        });
+    });
+}
 module.exports = {
     getAll: getAll,
-    insert: insert
+    getById: getById,
+    insert: insert,
+    update: update,
+    deleteById: deleteById
 };
