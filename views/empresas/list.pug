@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+    h2 Lista de empresas
+    table.table
+        thead
+            tr
+                th id
+                th nombre
+                th email
+                th telefono
+                th disciplina
+                th ubicacion
+                th acciones
+        tbody
+            each empresa in empresas
+                tr
+                    td= empresa.id
+                    td= empresa.nombre
+                    td= empresa.correo
+                    td= empresa.telefono
+                    td= empresa.disciplinas_patrocinio
+                    td= empresa.ubicacion
+                    td
+                        a.btn.btn-primary.btn-sm.mr-1(href="/empresas/"+empresa.id)
+                            i.fa.fa-eye
+                        a.btn.btn-danger.btn-sm.mr-1(href="/empresas/delete/"+empresa.id, onclick="return confirm('¿Estás seguro?')")
+                            i.fa.fa-trash
+                        a.btn.btn-success.btn-sm(href="/empresas/update/"+empresa.id)
+                            i.fa.fa-edit
